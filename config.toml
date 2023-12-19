@@ -1,0 +1,15 @@
+baseurl = "https://sandberg.nl/design/quicksand/"
+languageCode = "en-ie"
+title = "Quicksand presents:"
+theme="skeletontheme"
+canonifyurls = true
+contentdir = "content"
+layoutdir = "layouts"
+publishdir = "public"
+MetaDataFormat = "toml"
+[taxonomies]
+  tag = ""
+  group = ""
+  category = ""
+[blackfriday]
+	extensions = ["hardLineBreak"]

@@ -1,0 +1,43 @@
+<!-- Include our /layouts/partials/header.html partial -->
+{{ partial "header" . }}
+{{"<!-- begin layouts > index.html  template //-->" | safeHTML}}
+<body>
+<div class="background"></div>
+{{ range where .Data.Pages "Type" "homepage" }}
+<article>
+	<!-- Title, as defined in the front-matter  of /content/index.md -->
+	<div id="logo">
+		<img src="{{ .Site.BaseURL }}images/logo2.png">
+	</div>
+	<div class="content">
+		<!-- Content. is the actual content of '/content/index.md' -->
+		{{ .Content }}
+	</div>
+</article>
+{{ end }}
+<!-- This ends the loop started with 'range...' above -->
+
+<!-- loop through all pages in this 'blog' section -->
+{{ range (where .Site.Pages "Type" "post") }}
+	<article>
+		<!-- Title, as defined in the front-matter  of /content/blog/<pagename>.md -->
+		<!-- Wrap the title in a link to the actual full length article -->
+		<div class="flexitem thumbnail">
+			<img src="{{ .Params.thumbnail }}" alt="">
+		</div>
+		<div class="flexitem content">
+			<!-- Just show a summary. Not the full post -->
+			<a href="{{ .Permalink }}"><h1>{{ .Title }}</h1></a>
+			<!--<h5>{{ .Params.eventdate }}</br>
+			{{ .Params.eventtime }}</h5>-->
+			{{ .Summary }} <a href="{{ .Permalink }}" class="readmorelink">&#9986; Read more &#9986;</a>
+		</div>
+	</article>
+{{ end }}
+<!-- This ends the loop started with 'range...' above -->
+
+<!-- Include our /layouts/partials/footer.html partial -->
+{{ partial "footer" . }}
+{{"<!-- end layouts > index.html template //-->" | safeHTML}}
+</body>
+</html>
